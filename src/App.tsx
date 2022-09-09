@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { setNamespace } from "@quatico/magellan-client";
+import { greetMe } from "./services/greet-me";
+
 import logo from "./logo.svg";
 import "./App.css";
-import { greetMe } from "./services/greet-me";
+
+// to serve the frontend through react-scripts and run the server along it, we need to tell magellan
+// that the server is on a different port than where it is served from.
+setNamespace("default", { endpoint: "http://localhost:3001/api" });
 
 function App() {
   const [greeting, setGreeting] = useState("... waiting for greetings ...");
